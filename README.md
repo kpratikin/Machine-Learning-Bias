@@ -1,24 +1,21 @@
 # Machine-Learning-Bias
-Identify bias in ML algorithm and reduce the same using different techniques. 
+Identify bias in Machine Learning algorithm and reduce the same using different techniques. 
  
 <b>Background:</b><br> 
-Globally, organizations are adopting various machine learning algorithms to take day to day business decisions like whom to give credit card? Who will default next? Who will buy their products, What should we sell to a particular type of customer etc. These algorithms are very handy to take business decisions but one should ask- Are these algorithm transparent or do they create bias towards certain group of people? This is exactly we are going to explore in this analysis.
+Globally, organizations are adopting various machine learning algorithms to take day to day business decisions like whom to give credit card? Who will default next? Who will buy their products, What should we sell to a particular type of customer etc. These algorithms are very handy to take business decisions but at the same time one must ask- Are these algorithm transparent or do they create biases towards certain group of people? This is exactly we are going to explore in this analysis.
 <br><br>
 <b>Objective of the analysis: 
 <br>To evaluate <br>
-1. To evaluate whether a machine learning algorithm is biased towards certain group of people?  
+1. To evaluate whether a machine learning algorithm is biased towards certain group of people?
+2. What type of biases it is creating?
+3. How to reduce these biases from our model?
  </b>
 <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Problem%20statement.PNG">
  <br>Figure: Problem Statement
  </p>
-In order to evaluate machine learning bias, we will 
-<ol><li>First, create an algorithm to predict crime re-offenders.
-  <li> Identify discrimination (biases) in our data and model.
-    <li> Remove these discrimination (biases) from our model.
-      </ol>
  <b><br>
 About available data:</b><br>
-For our analysis, we are going to use the criminal dataset from propublica https://github.com/propublica/compas-analysis/.For more information about how data is acquired and treated please refer to their website- https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
+For our analysis, we are going to use the criminal dataset from Propublica https://github.com/propublica/compas-analysis/.For more information about how data is acquired and treated please refer to their website- https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
 <br>Data Collection Period: January 1, 2013 to September 9, 2014
 
 <b>Exploratory Analysis on important variables</b><br>
@@ -36,6 +33,11 @@ For our analysis, we are going to use the criminal dataset from propublica https
 We have used 'Mean difference score' between majority class and protected class to determine whether model is biased towards protected class or not.
 <br><b>Analysis:</b>
 Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Project_Final.ipynb 
+In order to evaluate machine learning bias, we will 
+<ol><li>First, create an algorithm to predict crime re-offenders.
+  <li> Identify discrimination (biases) in our data and model.
+    <li> Remove these discrimination (biases) from our model.
+      </ol>
  <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Classifier%20outputs.PNG">
  <br>Figure: Classifier Outputs (Tabular)
  </p>
@@ -46,22 +48,25 @@ Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Proj
  <li> Remove Protected Attribute (RPA): Train a model on input variables without protected attributes. This is the naive fairness-aware approach.
   <li> Reject-Option Classiﬁcation (ROC): Train a model using the Reject-option Classiﬁcation method.
    <li> Additive Counterfactually Fair Model (ACF): Train a model using the Additive Counterfactually Fair method.
+</ol>
+Models RPA, ROC and ACF are different ways with which we have treated biases that is generated in our model.
 
 <br><b>Conclusion:</b><br>
 The mean difference score between male and female groups is 0.139 i.e. it shows that male are 13.9% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.139 i.e. African-Americans are 13.9% more likely to re-offend as compared to Caucasians.
- <b>Thus, we concluded that - Through data, biases (discriminations) against men and African-Americans are injected to our model.</b>
- Now, how should we treat these models. For this, we ran RPA, ROC and ACF models as decribed in the above section. Following is the output of mean difference and auc scores of these models.
+ <b>Thus, we conclude that - Through data, biases (discriminations) against men and African-Americans are injected to our model.</b>
+ Now, how should we treat these biases. For this, we ran RPA, ROC and ACF models as decribed in the above section. Following is the output of mean difference and auc scores of these models.
 <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
  <br>Figure: Fainess and utility tradeoff
  </p>
 
-From the above graph, we can observe that there is a trade-off between the fairness (mean-difference) and the utility (accuracy).
+From the above graph, we can observe that there is a trade-off between the fairness (mean-difference) and the utility (accuracy) scores.
 For classifiers B and RPA, the accuracy is high, the mean-difference is also high.
 And for ROC and ACF clasiifiers, as the mean difference is decreasing, it is dragging the accuracy along with it.
-Ideally, we would prefer for the mean difference to be low (which tell us about fairness) and the accuracy (i.e. utility) to be high which overall tell us that model is fair and able to correctly predict the outcomes. 
+Ideally, we would prefer for the mean difference to be low (which tell us about fairness) and the accuracy (i.e. utility) to be high. This overall tell us that model is fair and able to correctly predict the outcomes. 
 
-So, if we directly interpet the the Baseline clasifier, we might create bias towards certain group of people. As shown above, if we ran ACF classifier, we are able to reduce the mean difference significantly and keeping accuracy at high level. Thus, reducing biases from our model and at the same time keeping the prediction power of our model high. 
+So, if we directly interpet the the Baseline clasifier, we are unkowingly biased towards certain group of people (in our case men and African-Americans). As shown above, if we ran ACF classifier, we are able to reduce the mean difference significantly while keeping auc score at high level. Thus, reducing biases from our model and at the same time keeping the prediction power of our model as high. 
 
+Thus, the above analysis shows that if there is historical bias in your data,  your model will tend to replicate those biases. An a decision maker, one should check whether your algorithms are creating such discriminatins and take necassary steps to reduce such biases from the model.
 
 <br><b>References:</b>
 <ol><li>Santa Clara University: MSIS 2631- Machine Learning with R & Python Course – Dr. Sanjeev Das.
