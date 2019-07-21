@@ -13,9 +13,9 @@ Globally, organizations are adopting various machine learning algorithms to take
  <br>Figure: Problem Statement
  </p>
 In order to evaluate machine learning bias, we will 
-<ol><li>First, create an algorithm to prdict crime re-offenders.
+<ol><li>First, create an algorithm to predict crime re-offenders.
   <li> Identify discrimination (biases) in our data and model.
-    <li> Remove these descrimination (bias) from our model.
+    <li> Remove these discrimination (biases) from our model.
       </ol>
 
  <b><br>
@@ -23,14 +23,13 @@ About available data:</b><br>
 For our analysis, we are going to use the criminal dataset from propublica https://github.com/propublica/compas-analysis/.For more information about how data is acquired and treated please refer to their website- https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
 <br>Data Collection Period: January 1, 2013 to September 9, 2014
 
+<b>Exploratory Analysis on important variables</b><br>
 <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Re-offenders.PNG">
  <br>Figure: Distribution of one time offenders and re-offenders
  </p>
- 
  <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Race.PNG">
  <br>Figure: Distribution of data as per race.
  </p>
- 
  <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Sex.PNG">
  <br>Figure: Distribution of data as per gender.
  </p>
@@ -39,18 +38,22 @@ For our analysis, we are going to use the criminal dataset from propublica https
 We have used 'Mean difference score' between majority class and protected class to determine whether model is biased towards protected class or not.
 
 <br><b>Analysis:</b>
-Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Project_Final.ipynb
-
-<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
- <br>Figure: Fainess and utility tradeoff
- </p>
- 
+Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Project_Final.ipynb 
  <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Classifier%20outputs.PNG">
  <br>Figure: Classifier Outputs (Tabular)
  </p>
 
-
 <br><b>Conclusion:</b><br>
+The mean difference score between male and female groups is <b>0.139 i.e. in laymen terms - data shows male are 13.9% more likely to re-offend as compared to female. 
+ <br>
+ Also, the mean difference African-American and Caucasians is <>0.139 i.e. in laymen terms - data shows African-American are 13.9% more likely to re-offend as compared to Caucasians.
+ 
+ <br>Thus, we concluded that through data, discrimination w.r.t. gender and race are injected to out model. 
+
+<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
+ <br>Figure: Fainess and utility tradeoff
+ </p>
+
 For the bias to be treated, there is a trade-off to be made between the fairness and the utility.
 Ideally, we would prefer for the mean difference to be low and the accuracy to be high. However, as we can see in the graph, although for B and RPA classifiers the accuracy is high, the mean-difference is also high.
 
