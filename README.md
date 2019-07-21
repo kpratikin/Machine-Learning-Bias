@@ -31,6 +31,7 @@ For our analysis, we are going to use the criminal dataset from Propublica https
 
 <b>Methodology for evaluating the bias</b><br>
 We have used 'Mean difference score' between majority class and protected class to determine whether model is biased towards protected class or not.
+
 <br><b>Analysis:</b>
 Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Project_Final.ipynb 
 In order to evaluate machine learning bias, we will 
@@ -52,21 +53,22 @@ In order to evaluate machine learning bias, we will
 Models RPA, ROC and ACF are different ways with which we have treated biases that is generated in our model.
 
 <br><b>Conclusion:</b><br>
-The mean difference score between male and female groups is 0.139 i.e. it shows that male are 13.9% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.139 i.e. African-Americans are 13.9% more likely to re-offend as compared to Caucasians.
- <b>Thus, we conclude that - Through data, biases (discriminations) against men and African-Americans are injected to our model.</b>
- Now, how should we treat these biases. For this, we ran RPA, ROC and ACF models as decribed in the above section. Following is the output of mean difference and auc scores of these models.
+The mean difference score between male and female groups is 0.139 i.e. male are 13.9% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.139 i.e. African-Americans are 13.9% more likely to re-offend as compared to Caucasians.
+ <b>Thus, we conclude that - <u>Through data, biases (discriminations) against men and African-Americans are injected to our model.</u></b><br>
+ Now, how should we treat these biases. For this, we ran RPA, ROC and ACF models as decribed in the above section. Following are the mean differences and auc scores of these models.
 <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
  <br>Figure: Fainess and utility tradeoff
  </p>
 
 From the above graph, we can observe that there is a trade-off between the fairness (mean-difference) and the utility (accuracy) scores.
-For classifiers B and RPA, the accuracy is high, the mean-difference is also high.
-And for ROC and ACF clasiifiers, as the mean difference is decreasing, it is dragging the accuracy along with it.
-Ideally, we would prefer for the mean difference to be low (which tell us about fairness) and the accuracy (i.e. utility) to be high. This overall tell us that model is fair and able to correctly predict the outcomes. 
+For classifiers B and RPA, the accuracy is high and the mean-difference is also high.
+And for ROC and ACF classifiers, as the mean difference is decreasing, it is dragging the accuracy along with it (trade-off).
 
-So, if we directly interpet the the Baseline clasifier, we are unkowingly biased towards certain group of people (in our case men and African-Americans). As shown above, if we ran ACF classifier, we are able to reduce the mean difference significantly while keeping auc score at high level. Thus, reducing biases from our model and at the same time keeping the prediction power of our model as high. 
+<b>Ideally, we would prefer for the mean difference to be low (which tell us about fairness) and the accuracy (i.e. utility) to be high. This overall tell us that model is fair and able to correctly predict the outcomes.</b> 
 
-Thus, the above analysis shows that if there is historical bias in your data,  your model will tend to replicate those biases. An a decision maker, one should check whether your algorithms are creating such discriminatins and take necassary steps to reduce such biases from the model.
+So, if we directly interpet the the Baseline clasifier, we are unkowingly creating bias towards certain group of people (in our case men and African-Americans). As shown above, if we ran ACF classifier, we are able to reduce the mean difference significantly while keeping auc score at high level. Thus, reducing biases from our model and at the same time keeping the prediction power of our model high. 
+
+Thus, the above analysis shows that if there is historical bias in your data,  your model will tend to generate those biases. As a decision maker, one should always check whether your algorithm is creating such discriminatins against certain grouop of people and if it's yes, one should take necessary steps to reduce such biases from the model.
 
 <br><b>References:</b>
 <ol><li>Santa Clara University: MSIS 2631- Machine Learning with R & Python Course – Dr. Sanjeev Das.
