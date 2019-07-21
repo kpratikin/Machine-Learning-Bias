@@ -7,46 +7,57 @@ Globally, organizations are adopting various machine learning algorithms to take
 <br><br>
 <b>Objective of the analysis: 
 <br>To evaluate <br>
-1. To evaluate whether a machine learning algorithm is biased against certain group of people?  
+1. To evaluate whether a machine learning algorithm is biased towards certain group of people?  
  </b>
- 
- <b><br>
-About available data:</b><br>
-For our analysis, we are going to use the criminal dataset from propublica github page https://github.com/propublica/compas-analysis/
-<br> For more information about how data is acquired and treated please refer to their website- https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
-<br>Data Collection Period: January 1, 2013 to September 9, 2014
-
-<p align="center"><img src="https://github.com/kpratikin/BOPS_Project/blob/master/Data%20availiability%20and%20timeline.PNG">
- <br>Figure: Data Timeline
+<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Problem%20statement.PNG">
+ <br>Figure: Problem Statement
  </p>
- 
-<b>Methodology for evaluating the bias</b><br>
-
 In order to evaluate machine learning bias, we will 
 <ol><li>First, create an algorithm to prdict crime re-offenders.
   <li> Identify discrimination (biases) in our data and model.
     <li> Remove these descrimination (bias) from our model.
       </ol>
-<p align="center"><img src="https://github.com/kpratikin/BOPS_Project/blob/master/timeline%20and%20treatment.PNG">
- <br>Figure: Timeperiod
+
+ <b><br>
+About available data:</b><br>
+For our analysis, we are going to use the criminal dataset from propublica https://github.com/propublica/compas-analysis/.For more information about how data is acquired and treated please refer to their website- https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
+<br>Data Collection Period: January 1, 2013 to September 9, 2014
+
+<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Re-offenders.PNG">
+ <br>Figure: Distribution of one time offenders and re-offenders
+ </p>
+ 
+ <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Race.PNG">
+ <br>Figure: Distribution of data as per race.
+ </p>
+ 
+ <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Sex.PNG">
+ <br>Figure: Distribution of data as per gender.
  </p>
 
-<p align="center"><img src="https://github.com/kpratikin/BOPS_Project/blob/master/impact%20of%20bops.PNG">
- <br>Figure: Difference in Difference approach to capture 'Impact of BOPS on sales'
- </p>
-
+<b>Methodology for evaluating the bias</b><br>
+We have used 'Mean difference score' between majority class and protected class to determine whether model is biased towards protected class or not.
 
 <br><b>Analysis:</b>
-Refer code - https://github.com/kpratikin/BOPS_Project/blob/master/BOPS.rmd
+Refer code - https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Project_Final.ipynb
 
-<br><b>Conclusion & Suggestions:</b><br>
-Our analysis of the impact of BOPS strategy on online sales and returns shows that online sales and returns do not increase with the implementation of this strategy. It rather decreases. 
-
-<p align="center"><img src="https://github.com/kpratikin/BOPS_Project/blob/master/Conclusion.PNG">
+<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
+ <br>Figure: Fainess and utility tradeoff
+ </p>
+ 
+ <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Classifier%20outputs.PNG">
+ <br>Figure: Classifier Outputs (Tabular)
  </p>
 
 
-One of the anticipated reason behind this decrease is ‘Channel-Shift’ effect i.e. after checking the product online, customers are visiting nearby stores to buy that product, instead of buying it online. This corroborates with the consumer behavior phenomenon i.e. research online, purchase offline. Because of this effect, we may be observing decrease in online sales/returns but if we include offline sales/returns data in our analysis, we may observe that there is net increase in sales/returns. Therefore, we recommend to include offline store data for the analysis to come up with the net impact of the BOPS on overall sales and return instead of focusing on one channel.
+<br><b>Conclusion:</b><br>
+For the bias to be treated, there is a trade-off to be made between the fairness and the utility.
+Ideally, we would prefer for the mean difference to be low and the accuracy to be high. However, as we can see in the graph, although for B and RPA classifiers the accuracy is high, the mean-difference is also high.
+
+And for ROC and ACF, as the mean difference is decreasing, it is dragging the accuracy along with it.
+
+So, with this trade off, we think ACF is th best classifier to go ahead with as the mean difference is significantly lower than B and RPA, however, the accuracy does not seem to drop that much.
+(This tradeoff depends on one's own trade-off conditions as it changes across datasets and also the problem statement we are dealing with)
 
 <br><b>References:</b>
 <ol><li>Santa Clara University: MSIS 2631- Machine Learning with R & Python Course – Dr. Sanjeev Das.
