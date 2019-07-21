@@ -39,10 +39,7 @@ In order to evaluate machine learning bias, we will
   <li> Identify discrimination (biases) in our data and model.
     <li> Remove these discrimination (biases) from our model.
       </ol>
- <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Classifier%20outputs.PNG">
- <br>Figure: Classifier Outputs (Tabular)
- </p>
- 
+  
  <b> How biases are treated? </b><br>
  We have used Themis-ML (https://github.com/cosmicBboy/themis-ml) package to identify and remove biases. The following are the models and their descriptions:
  <ol><li> Baseline (BB): Train a model on all input variables, including protected attributes.
@@ -50,7 +47,10 @@ In order to evaluate machine learning bias, we will
   <li> Reject-Option Classiﬁcation (ROC): Train a model using the Reject-option Classiﬁcation method.
    <li> Additive Counterfactually Fair Model (ACF): Train a model using the Additive Counterfactually Fair method.
 </ol>
-Models RPA, ROC and ACF are different ways with which we have treated biases that is generated in our model.
+Models RPA, ROC and ACF are different ways in Themis-ml packge to treat biases in our model.
+<p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Classifier%20outputs.PNG">
+ <br>Figure: Classifier Outputs (Tabular).
+ </p>
 
 <br><b>Conclusion:</b><br>
 The mean difference score between male and female groups is 0.139 i.e. male are 13.9% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.139 i.e. African-Americans are 13.9% more likely to re-offend as compared to Caucasians.
