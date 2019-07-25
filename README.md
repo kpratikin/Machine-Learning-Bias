@@ -2,7 +2,7 @@
 Identify bias in Machine Learning algorithm and reduce the same using different techniques. 
  
 <b>Background:</b><br> 
-Globally, organizations are adopting various machine learning algorithms to take day to day business decisions like whom to give credit card? Who will default next? Who will buy their products, What should we sell to a particular type of customer etc. These algorithms are very handy to take business decisions but at the same time one must ask- Are these algorithm transparent or do they create biases towards certain group of people? This is exactly we are going to explore in this analysis.
+Globally, organizations are adopting various machine learning algorithms to take day to day business decisions like whom to give credit card? Who will default next? Who will buy their products, What should we sell to a particular type of customer etc. These algorithms are very handy to take business decisions but at the same time one must ask- Are these algorithm transparent or do they create biases towards certain group of people? This is exactly I am going to explore in this analysis.
 <br><br>
 <b>Objective of the analysis: 
 <br>To evaluate <br>
@@ -53,7 +53,7 @@ Models RPA, ROC and ACF are different ways in Themis-ml packge to treat biases i
  </p>
 
 <br><b>Conclusion:</b><br>
-The mean difference score between male and female groups is 0.139 i.e. male are 13.9% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.139 i.e. African-Americans are 13.9% more likely to re-offend as compared to Caucasians.
+The mean difference score between male and female groups is 0.17 i.e. male are 17% more likely to re-offend as compared to female. Also, the mean difference between African-American and Caucasians is 0.22 i.e. African-Americans are 22% more likely to re-offend as compared to Caucasians.
  <b>Thus, we conclude that - <u>Through data, biases (discriminations) against men and African-Americans are injected to our model.</u></b><br>
  Now, how should we treat these biases. For this, we ran RPA, ROC and ACF models as decribed in the above section. Following are the mean differences and auc scores of these models.
 <p align="center"><img src="https://github.com/kpratikin/Machine-Learning-Bias/blob/master/Output.PNG">
